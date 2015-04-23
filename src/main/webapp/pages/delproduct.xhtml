@@ -1,0 +1,87 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head><title>Fylyzhanka WEB 1.1.4</title></h:head>
+<h:body>
+
+
+    <h:form>
+
+        <p:accordionPanel>
+            <p:tab title="Fylyzhanka WEB">
+                <p:commandButton id="home" value="Home" action="index" ajax="false"/>
+                <p:commandButton id="inputProduct" value="Внести продукт" action="inputproduct" ajax="false"/>
+                <p:commandButton id="viewProductTop" value="Просмотр" action="#{productMB.viewProduct}" ajax="false"/>
+            </p:tab>
+        </p:accordionPanel>
+
+
+
+        <table>
+            <tr>
+                <td><h:outputLabel for="id" value="Id : " /></td>
+                <td><p:inputText id="id" value="#{productMB.id}">
+                    <f:converter converterId="javax.faces.Integer"/>
+                    <p:ajax event="blur" update="idMsg" />
+                </p:inputText>
+                    <p:message id="idMsg" for="id" display="icon"/>
+                </td>
+            </tr>
+            <tr>
+                <td><h:outputLabel for="name" value="Название : " /></td>
+                <td><p:inputText id="name" value="#{productMB.name}">
+                    <f:validateLength minimum="3" />
+                    <p:ajax event="blur" update="nameMsg" />
+                </p:inputText>
+                    <p:message id="nameMsg" for="name" display="icon"/>
+                </td>
+            </tr>
+            <tr>
+                <td><h:outputLabel for="cost" value="Стоимость : " /></td>
+                <td><p:inputText id="cost" value="#{productMB.cost}">
+                    <f:validateLength minimum="1" />
+                    <p:ajax event="blur" update="costMsg" />
+                </p:inputText>
+                    <p:message id="costMsg" for="cost" display="icon"/>
+                </td>
+            </tr>
+            <tr>
+
+                <td><p:commandButton id="deleteProduct" value="Delete" action="#{productMB.deleteProduct}" ajax="false"/></td>
+            </tr>
+            <tr>
+
+
+            </tr>
+        </table>
+
+        <p:dataTable id="products" var="product" value="#{productMB.productList}" style="width: 30%">
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="ID" />
+                </f:facet>
+                <h:outputText value="#{product.id}" />
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Название" />
+                </f:facet>
+                <h:outputText value="#{product.name}" />
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Стоимость(грн):" />
+                </f:facet>
+                <h:outputText value="#{product.cost}" />
+            </p:column>
+        </p:dataTable>
+
+
+
+    </h:form>
+
+
+
+</h:body>
+</html>

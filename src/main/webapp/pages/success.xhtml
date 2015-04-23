@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Fylyzhanka WEB 1.1.4</title>
+</h:head>
+<h:body>
+    <h:form>
+
+        <p:accordionPanel>
+            <p:tab title="Fylyzhanka WEB">
+                <p:commandButton id="home" value="Home" action="index" ajax="false"/>
+                <p:commandButton id="inputProduct" value="Внести продукт" action="inputproduct" ajax="false"/>
+                <p:commandButton id="delProduct" value="Удалить продукт" action="delproduct" ajax="false"/>
+                <p:commandButton id="viewProductTop" value="Просмотр" action="#{productMB.viewProduct}" ajax="false"/>
+            </p:tab>
+        </p:accordionPanel>
+
+
+        <h:outputText value="Продукты : "></h:outputText>
+        <p:dataTable id="products" var="product" value="#{productMB.productList}" style="width: 30%">
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="ID" />
+                </f:facet>
+                <h:outputText value="#{product.id}" />
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Название" />
+                </f:facet>
+                <h:outputText value="#{product.name}" />
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Стоимость(грн):" />
+                </f:facet>
+                <h:outputText value="#{product.cost}" />
+            </p:column>
+        </p:dataTable>
+    </h:form>
+</h:body>
+
+</html>

@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head><title>Fylyzhanka WEB 1.1.4</title></h:head>
+<h:body>
+
+
+    <h:form>
+
+        <p:accordionPanel>
+            <p:tab title="Fylyzhanka WEB">
+                <p:commandButton id="inputProduct" value="Внести продукт" action="inputproduct" ajax="false"/>
+                <p:commandButton id="delProduct" value="Удалить продукт" action="delproduct" ajax="false"/>
+                <p:commandButton id="viewProductTop" value="Просмотр" action="#{productMB.viewProduct}" ajax="false"/>
+            </p:tab>
+        </p:accordionPanel>
+
+
+
+
+
+    </h:form>
+
+
+
+</h:body>
+</html>
