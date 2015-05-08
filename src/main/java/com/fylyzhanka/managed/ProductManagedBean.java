@@ -28,6 +28,7 @@ public class ProductManagedBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private static final String INPUTPRODUCT = "inputproduct";
+    private static final String EDPRODUCT = "edproduct";
     private static final String DELETEPRODUCT = "delproduct";
     private static final String SUCCESS = "success";
     private static final String ERROR   = "error";
@@ -55,6 +56,21 @@ public class ProductManagedBean implements Serializable {
             product.setCost(getCost());
             getProductService().addProduct(product);
             return SUCCESS;
+        } catch (DataAccessException e) {
+            e.printStackTrace();
+        }
+
+        return ERROR;
+    }
+
+    public String editProduct() {
+        try {
+            Product product = new Product();
+            product.setId(getId());
+            product.setName(getName());
+            product.setCost(getCost());
+            getProductService().updateProduct(product);
+            return EDPRODUCT;
         } catch (DataAccessException e) {
             e.printStackTrace();
         }

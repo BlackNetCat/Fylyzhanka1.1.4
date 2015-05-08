@@ -12,12 +12,12 @@
     <!-- Beans Declaration -->
     <bean id="Product" class="com.fylyzhanka.model.Product"/>
 
-    <!-- User Service Declaration -->
+    <!-- Product Service Declaration -->
     <bean id="ProductService" class="com.fylyzhanka.service.ProductService">
         <property name="productDAO" ref="ProductDAO" />
     </bean>
 
-    <!-- User DAO Declaration -->
+    <!-- Product DAO Declaration -->
     <bean id="ProductDAO" class="com.fylyzhanka.dao.ProductDAO">
         <property name="sessionFactory" ref="SessionFactory" />
     </bean>
@@ -25,7 +25,7 @@
     <!-- Data Source Declaration -->
     <bean id="DataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
         <property name="driverClass" value="com.mysql.jdbc.Driver" />
-        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/testdb?useUnicode=true&amp;characterEncoding=utf-8" />
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/testdb?characterEncoding=UTF-8" />
         <property name="user" value="root" />
         <property name="password" value="root" />
         <property name="maxPoolSize" value="10" />

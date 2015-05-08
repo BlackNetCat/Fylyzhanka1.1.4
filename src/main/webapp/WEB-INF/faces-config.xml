@@ -29,6 +29,10 @@
             <to-view-id>/pages/delproduct.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
+            <from-outcome>acesspage</from-outcome>
+            <to-view-id>/pages/accesspage.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
             <from-outcome>error</from-outcome>
             <to-view-id>/pages/error.xhtml</to-view-id>
         </navigation-case>

@@ -12,6 +12,7 @@
             <p:tab title="Fylyzhanka WEB">
                 <p:commandButton id="home" value="Home" action="index" ajax="false"/>
                 <p:commandButton id="inputProduct" value="Внести продукт" action="inputproduct" ajax="false"/>
+                <p:commandButton id="edProduct" value="Изменить продукт" action="edproduct" ajax="false"/>
                 <p:commandButton id="viewProductTop" value="Просмотр" action="#{productMB.viewProduct}" ajax="false"/>
             </p:tab>
         </p:accordionPanel>
@@ -29,22 +30,10 @@
                 </td>
             </tr>
             <tr>
-                <td><h:outputLabel for="name" value="Название : " /></td>
-                <td><p:inputText id="name" value="#{productMB.name}">
-                    <f:validateLength minimum="3" />
-                    <p:ajax event="blur" update="nameMsg" />
-                </p:inputText>
-                    <p:message id="nameMsg" for="name" display="icon"/>
-                </td>
+
             </tr>
             <tr>
-                <td><h:outputLabel for="cost" value="Стоимость : " /></td>
-                <td><p:inputText id="cost" value="#{productMB.cost}">
-                    <f:validateLength minimum="1" />
-                    <p:ajax event="blur" update="costMsg" />
-                </p:inputText>
-                    <p:message id="costMsg" for="cost" display="icon"/>
-                </td>
+
             </tr>
             <tr>
 

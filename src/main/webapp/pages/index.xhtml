@@ -11,9 +11,13 @@
         <p:accordionPanel>
             <p:tab title="Fylyzhanka WEB">
                 <p:commandButton id="inputProduct" value="Внести продукт" action="inputproduct" ajax="false"/>
+                <p:commandButton id="edProduct" value="Изменить продукт" action="edproduct" ajax="false"/>
                 <p:commandButton id="delProduct" value="Удалить продукт" action="delproduct" ajax="false"/>
                 <p:commandButton id="viewProductTop" value="Просмотр" action="#{productMB.viewProduct}" ajax="false"/>
             </p:tab>
+            <p:tab title="Авторизация">
+                <p:commandButton id="accessPage" value="Авторизация" action="accesspage" ajax="false"/>
+           </p:tab>
         </p:accordionPanel>
 
 

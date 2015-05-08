@@ -11,8 +11,8 @@
         <p:accordionPanel>
             <p:tab title="Fylyzhanka WEB">
                 <p:commandButton id="home" value="Home" action="index" ajax="false"/>
-                <p:commandButton id="inputProduct" value="Изменить продукт" action="edproduct" ajax="false"/>
-                <p:commandButton id="delProduct" value="Удалить продукт" action="delproduct" ajax="true"/>
+                <p:commandButton id="inputProduct" value="Внести продукт" action="inputproduct" ajax="false"/>
+                <p:commandButton id="delProduct" value="Удалить продукт" action="delproduct" ajax="false"/>
                 <p:commandButton id="viewProductTop" value="Просмотр" action="#{productMB.viewProduct}" ajax="false"/>
             </p:tab>
         </p:accordionPanel>
@@ -22,11 +22,10 @@
         <table>
             <tr>
                 <td><h:outputLabel for="id" value="Id : " /></td>
-                <td><p:inputText id="id" value="#{productMB.id}">
-                    <f:converter converterId="javax.faces.Integer"/>
-                    <p:ajax event="blur" update="idMsg" />
-                </p:inputText>
-                    <p:message id="idMsg" for="id" display="icon"/>
+                <td>
+                    <p:selectOneMenu id="id" value="#{productMB.id}" >
+                        <f:selectItems value="#{productMB.productList}" var="productT" itemLabel="#{productT.id}" itemValue="#{productT.id}" />
+                    </p:selectOneMenu>
                 </td>
             </tr>
             <tr>
@@ -48,11 +47,35 @@
                 </td>
             </tr>
             <tr>
-                <td><p:commandButton id="addProduct"    value="Add" action="#{productMB.addProduct}" ajax="false"/></td>
+                <td><p:commandButton id="editProduct"    value="Edit" action="#{productMB.editProduct}" ajax="false"/></td>
 
                 <td><p:commandButton id="reset"    value="Reset" action="#{productMB.reset}" ajax="false"/></td>
             </tr>
         </table>
+
+        <p:dataTable id="products" var="product" value="#{productMB.productList}" style="width: 30%">
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="ID" />
+                </f:facet>
+                <h:outputText value="#{product.id}" />
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Название" />
+                </f:facet>
+                <h:outputText value="#{product.name}" />
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Стоимость(грн):" />
+                </f:facet>
+                <h:outputText value="#{product.cost}" />
+            </p:column>
+        </p:dataTable>
+
+
+
 
 
 
