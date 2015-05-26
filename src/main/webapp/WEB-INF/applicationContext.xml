@@ -11,14 +11,22 @@
 
     <!-- Beans Declaration -->
     <bean id="Product" class="com.fylyzhanka.model.Product"/>
+    <bean id="Ingredient" class="com.fylyzhanka.model.Ingredient"/>
 
     <!-- Product Service Declaration -->
     <bean id="ProductService" class="com.fylyzhanka.service.ProductService">
         <property name="productDAO" ref="ProductDAO" />
     </bean>
+    <bean id="IngredientService" class="com.fylyzhanka.service.IngredientService">
+        <property name="ingredientDAO" ref="IngredientDAO" />
+    </bean>
 
     <!-- Product DAO Declaration -->
     <bean id="ProductDAO" class="com.fylyzhanka.dao.ProductDAO">
+        <property name="sessionFactory" ref="SessionFactory" />
+    </bean>
+
+    <bean id="IngredientDAO" class="com.fylyzhanka.dao.IngredientDAO">
         <property name="sessionFactory" ref="SessionFactory" />
     </bean>
 
@@ -39,6 +47,7 @@
         <property name="annotatedClasses">
             <list>
                 <value>com.fylyzhanka.model.Product</value>
+                <value>com.fylyzhanka.model.Ingredient</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -48,6 +57,8 @@
             </props>
         </property>
     </bean>
+
+
 
     <!-- Enable the configuration of transactional behavior based on annotations -->
     <tx:annotation-driven transaction-manager="txManager"/>

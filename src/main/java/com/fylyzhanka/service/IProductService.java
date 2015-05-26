@@ -23,7 +23,7 @@ public interface IProductService {
     public void addProduct(Product product);
 
     /**
-     * Update User
+     * Update Product
      *
      * @param  Product product
      */

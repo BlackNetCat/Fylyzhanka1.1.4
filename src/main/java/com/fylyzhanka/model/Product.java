@@ -1,9 +1,8 @@
 package com.fylyzhanka.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -15,12 +14,15 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name="PRODUCT")
+@Table(name="product")
 public class Product {
 
     private int id;
     private String name;
     private float cost;
+    private Set<Ingredient> ingredients = new HashSet<Ingredient>();
+
+  //  private int ingredientId;
 
     /**
      * Get Product Id
@@ -28,7 +30,8 @@ public class Product {
      * @return int - Product Id
      */
     @Id
-    @Column(name="ID", unique = true, nullable = false)
+    @GeneratedValue
+    @Column(name="product_id", unique = true, nullable = false)
     public int getId() {
         return id;
     }
@@ -47,7 +50,7 @@ public class Product {
      *
      * @return String - Product Name
      */
-    @Column(name="NAME", unique = true, nullable = false)
+    @Column(name="name", unique = true, nullable = false)
     public String getName() {
         return name;
     }
@@ -66,10 +69,64 @@ public class Product {
      *
      * @return float - Product Cost
      */
-    @Column(name="COST", unique = true, nullable = false)
+    @Column(name="cost", unique = true, nullable = false)
     public float getCost() {
         return cost;
     }
+
+
+   /* @Column(name="ingredientid", unique = false, nullable = false)
+    public int getIngredientId() {
+        return ingredientId;
+    }
+    public void setIngredientId(int ingredientId) {
+        this.ingredientId = ingredientId;
+    }*/
+
+
+
+   /* @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(name = "product_ingredient",joinColumns = {@JoinColumn(name = "product_id")},
+            inverseJoinColumns = {@JoinColumn(name = "ingredient_id")}
+    )
+    public Set<Ingredient> getIngs() {
+        return this.ingredients;
+    }*/
+
+
+
+
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "product_ingredient", joinColumns = {
+            @JoinColumn(name = "product_id", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "ingredient_id",
+                    nullable = false, updatable = false) })
+    public Set<Ingredient> getIngredients() {
+        return this.ingredients;
+    }
+
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+
+
+
+
+
+
+  /*  private Set<Ingredient> ingredients2 = new HashSet<Ingredient>();
+
+    public Set<Ingredient> getIngredients2() {
+        return ingredients2;
+    }
+
+    public void setIngredients2(Set<Ingredient> ingredients) {
+        this.ingredients2 = ingredients;
+    }*/
+
+
 
     /**
      * Set Product Cost
@@ -86,6 +143,7 @@ public class Product {
         strBuff.append("id : ").append(getId());
         strBuff.append(", name : ").append(getName());
         strBuff.append(", cost : ").append(getCost());
+      //  strBuff.append(", ingredientid : ").append(getIngredientId());
         return strBuff.toString();
     }
 }

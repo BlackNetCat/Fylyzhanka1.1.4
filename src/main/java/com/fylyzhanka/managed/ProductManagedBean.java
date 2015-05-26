@@ -33,7 +33,7 @@ public class ProductManagedBean implements Serializable {
     private static final String SUCCESS = "success";
     private static final String ERROR   = "error";
 
-    //Spring User Service is injected...
+    //Spring Product Service is injected...
     @ManagedProperty(value="#{ProductService}")
     IProductService productService;
 
@@ -42,6 +42,7 @@ public class ProductManagedBean implements Serializable {
     private int id;
     private String name;
     private float cost;
+  //  private int ingredienId;
 
     /**
      * Add Product
@@ -54,6 +55,7 @@ public class ProductManagedBean implements Serializable {
             product.setId(getId());
             product.setName(getName());
             product.setCost(getCost());
+        //    product.setIngredientId(getIngredienId());
             getProductService().addProduct(product);
             return SUCCESS;
         } catch (DataAccessException e) {
@@ -63,12 +65,18 @@ public class ProductManagedBean implements Serializable {
         return ERROR;
     }
 
+    /**
+     * Edir Product
+     *
+     * @return String - Response Message
+     */
     public String editProduct() {
         try {
             Product product = new Product();
             product.setId(getId());
             product.setName(getName());
             product.setCost(getCost());
+         //   product.setIngredientId(getIngredienId());
             getProductService().updateProduct(product);
             return EDPRODUCT;
         } catch (DataAccessException e) {
@@ -101,9 +109,9 @@ public class ProductManagedBean implements Serializable {
         return SUCCESS;
     }
 
-    public String inputProduct() {
+   /* public String inputProduct() {
         return INPUTPRODUCT;
-    }
+    }*/
 
     /**
      * Reset Fields
@@ -113,6 +121,7 @@ public class ProductManagedBean implements Serializable {
         this.setId(0);
         this.setName("");
         this.setCost(0);
+     //   this.setIngredienId(0);
     }
 
     /**
@@ -138,7 +147,7 @@ public class ProductManagedBean implements Serializable {
     /**
      * Set Product Service
      *
-     * @param IUserService - Product Service
+     * @param IProductService - Product Service
      */
     public void setProductService(IProductService productService) {
         this.productService = productService;
@@ -147,7 +156,7 @@ public class ProductManagedBean implements Serializable {
     /**
      * Set Product List
      *
-     * @param List - User List
+     * @param List - Product List
      */
     public void setProductList(List<Product> productList) {
         this.productList = productList;
@@ -206,5 +215,14 @@ public class ProductManagedBean implements Serializable {
     public void setCost(float cost) {
         this.cost = cost;
     }
+
+
+   /* public int getIngredienId() {
+        return ingredienId;
+    }
+
+    public void setIngredienId(int ingredienId) {
+        this.ingredienId = ingredienId;
+    }*/
 
 }

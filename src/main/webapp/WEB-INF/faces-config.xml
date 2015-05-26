@@ -21,8 +21,16 @@
             <to-view-id>/pages/success.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
+            <from-outcome>success2</from-outcome>
+            <to-view-id>/pages/success2.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
             <from-outcome>inputproduct</from-outcome>
             <to-view-id>/pages/inputproduct.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>inputingredient</from-outcome>
+            <to-view-id>/pages/inputingredient.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>delproduct</from-outcome>

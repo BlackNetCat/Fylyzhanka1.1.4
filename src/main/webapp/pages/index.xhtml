@@ -5,25 +5,30 @@
 <h:head><title>Fylyzhanka WEB 1.1.4</title></h:head>
 <h:body>
 
-
     <h:form>
-
+        <p:commandButton id="home" value="Главная" action="index" icon="ui-icon-home" ajax="false"/>
+    </h:form>
+    <h:form>
         <p:accordionPanel>
-            <p:tab title="Fylyzhanka WEB">
+            <p:tab title="Продукты">
                 <p:commandButton id="inputProduct" value="Внести продукт" action="inputproduct" ajax="false"/>
                 <p:commandButton id="edProduct" value="Изменить продукт" action="edproduct" ajax="false"/>
                 <p:commandButton id="delProduct" value="Удалить продукт" action="delproduct" ajax="false"/>
                 <p:commandButton id="viewProductTop" value="Просмотр" action="#{productMB.viewProduct}" ajax="false"/>
+                <p:commandButton id="report" value="Отчет" action="report" ajax="false"/>
+
+
+            </p:tab>
+            <p:tab title="Ингредиенты">
+                <p:commandButton id="inputIngredient" value="Внести ингредиент" action="inputingredient" ajax="false"/>
+                <p:commandButton id="edIngredient" value="Изменить ингредиент" action="edingredient" ajax="false"/>
+                <p:commandButton id="delIngredient" value="Удалить ингредиент" action="delingredient" ajax="false"/>
+                <p:commandButton id="viewIngredient" value="Просмотр" action="success2" ajax="false"/>
             </p:tab>
             <p:tab title="Авторизация">
                 <p:commandButton id="accessPage" value="Авторизация" action="accesspage" ajax="false"/>
            </p:tab>
         </p:accordionPanel>
-
-
-
-
-
     </h:form>
 
 
